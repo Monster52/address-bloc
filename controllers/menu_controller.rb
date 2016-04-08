@@ -69,8 +69,8 @@ class MenuController
       system "clear"
       if phone == entry.phone_number
         puts entry.to_s
-      else
-        puts "Phone number #{phone} is not in the database."
+      else 
+        puts "#{phone} not found" 
         main_menu
       end
     end
