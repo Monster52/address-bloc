@@ -66,10 +66,11 @@ class MenuController
     phone = gets.chomp
 
     @address_book.entries.each do |entry|
-      system "clear"
       if phone == entry.phone_number
+        system "clear"
         puts entry.to_s
-      else
+      elsif entry == @address_book.entries.last
+        system "clear"
         puts "#{phone} not found" 
         main_menu
       end
