@@ -11,10 +11,11 @@ class MenuController
     puts "Main Menu - #{address_book.entries.count} entries"
     puts "1 - View all entries"
     puts "2 - Create and entry"
-    puts "3 - Search for an entry"
-    puts "4 - Import entries from a CSV"
-    puts "5 - Nuke all entries"
-    puts "6 - Exit"
+    puts "3 - View by Number"
+    puts "4 - Search for an entry"
+    puts "5 - Import entries from a CSV"
+    puts "6 - Nuke all entries"
+    puts "7 - Exit"
     print "Enter your selection: "
 
     selection = gets.to_i
@@ -38,9 +39,13 @@ class MenuController
         main_menu
       when 5
         system "clear"
-        nuke
+        read_csv
         main_menu
       when 6
+        system "clear"
+        nuke
+        main_menu
+      when 7
         puts "Good-bye"
         exit(0)
       else
