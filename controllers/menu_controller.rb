@@ -26,15 +26,15 @@ class MenuController
         main_menu
       when 2
         system "clear"
-        create_entry
+        view_by_number
         main_menu
       when 3
         system "clear"
-        search_entries
+        create_entry
         main_menu
       when 4
         system "clear"
-        read_csv
+        search_entries
         main_menu
       when 5
         system "clear"
@@ -51,7 +51,7 @@ class MenuController
   end
 
   def view_all_entries
-    address_book.entries.each do |entry|
+    @address_book.entries.each do |entry|
       system "clear"
       puts entry.to_s
       entry_submenu(entry)
@@ -59,6 +59,22 @@ class MenuController
 
     system "clear"
     puts "End of entries"
+  end
+
+  def view_by_number
+    puts "Enter phone number"
+    phone = gets.chomp
+
+    @address_book.entries.each do |entry|
+      if phone == entry.phone_number
+        system "clear"
+        puts entry.to_s
+      elsif entry == @address_book.entries.last
+        system "clear"
+        puts "#{phone} not found" 
+        main_menu
+      end
+    end
   end
 
   def create_entry
